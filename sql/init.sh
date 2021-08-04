@@ -1,0 +1,1 @@
+mysql -u root --password=pass comentarios < /home/sql/scripts.sql
