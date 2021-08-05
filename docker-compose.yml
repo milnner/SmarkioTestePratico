@@ -3,14 +3,20 @@ version: "3"
 services: 
     nodejs:
         build: .
+        command: npm start
         ports: 
             - "3000:3000"
+
         volumes: 
-            - .:/usr/app
+            - ./node:/usr/app
+        networks:
+            - gateway
+
 
     db:
         image: mysql
         restart: always
+        
         ports: 
             - "3306:3306"
         volumes: 
@@ -18,3 +24,9 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: pass
             MYSQL_DATABASE: comentarios
+        networks:
+            - gateway
+
+networks:
+    gateway: {}
+  
