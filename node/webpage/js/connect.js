@@ -6,6 +6,7 @@ function colocaOsComentarios(){ // coloca os comentários do banco de dados na t
     {
         res = JSON.parse(http.responseText);
         let comentarios = document.getElementById('comentarios');
+        comentarios.innerHTML = '';
         for(let i = 0;i < res.length; i++)
         {
             let comentario = '';
