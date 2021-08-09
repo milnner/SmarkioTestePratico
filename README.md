@@ -20,7 +20,7 @@ const API_KEY = '{api-key}'
 
 const tts = new TextToSpeechV1({
     authenticator: new IamAuthenticator({
-      apikey: 'ScFTZMJHpbSAixBe_ibb-msWVytvwoh66NAsKZQE5X7u',
+      apikey: '{api-key}',
     }),
     serviceUrl: API_KEY,
 });
