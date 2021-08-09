@@ -1,43 +1,38 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const express = require('express');
 const TextToSpeechV1 = require('ibm-watson/text-to-speech/v1');
+const md5 = require('md5');
 const fs = require('fs');
+const { IamAuthenticator } = require('ibm-watson/auth');
 
 //TEXT_TO_SPEECH
-const { IamAuthenticator } = require('ibm-watson/auth');
+const API_KEY = 'ScFTZMJHpbSAixBe_ibb-msWVytvwoh66NAsKZQE5X7u';
 
 const tts = new TextToSpeechV1({
     authenticator: new IamAuthenticator({
-      apikey: 'ScFTZMJHpbSAixBe_ibb-msWVytvwoh66NAsKZQE5X7u',
+      apikey: API_KEY,
     }),
     serviceUrl: 'https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/12db4b7b-b599-46d0-8d90-4d7ab6b114dc',
 });
 
-function fazAudio(params, req){  
-	tts.synthesize(params)
-    .then(response => {
+async function fazAudio(params){ //Ele retorna uma string que representa o binario do audio
+	fileName = `${md5(params.text)}`;
+ 	tts.synthesize(params).then(response => {
+		return tts.repairWavHeaderStream(response.result);
+  	
+	}).then(buffer => {
+    
+		fs.writeFileSync(`webpage/audio/${fileName}.wav`, buffer, () => {
+		
+		});	
+	}).catch(err => {
+    		console.log('error:', err);
+  	});
+		return fileName;
+};
+	
+	
 
-          return tts.repairWavHeaderStream(response.result);
-        })
-        .then(buffer => {
-            fs.writeFileSync('audio.wav', buffer,async (err) => {
-                if (err) throw err;
-				fileContent = () => {
-				let fl = fs.readFileSync('audio.wav');
-				return new Buffer (f).toString('base_64');
-			}
-
-            await Cmts.create({
-				num: 0, 
-				comentario: req.body.comment,
-				audio: fileContent
-			});
-        });
-    })
-    .catch(err => {
-        console.log('error:', err);
-    });
-}
 
 //MODEL
 const sequelize = new Sequelize('comentarios', 'root', 'pass', {
@@ -63,12 +58,12 @@ try {
 			  allowNull:false 
 		},
 		audio:{
-			type: DataTypes.BLOB,
+			type: DataTypes.STRING(6000),
 			allowNull: false
 		},
 	}, {
 		sequelize,
-		modelName: 'Cmts' 
+		modelName: 'Cmts'
 	});
 
 
@@ -98,28 +93,22 @@ app.post('/add', async (req, res)=>{
 	console.log(req.body);
 	if('' !== req.body.comment)
 	{
-		await fazAudio({
+		let local = await fazAudio({
 			text: req.body.comment,
 			accept: 'audio/wav',
 			voice: 'pt-BR_IsabelaV3Voice',
-		},
-		req
-		)
+		});
 
-		/*await Cmts.create({
+		await Cmts.create({
 			num: 0, 
-			comentario: req.body.comment
-		});*/
+			comentario: req.body.comment,
+			audio: local
+		});
 	}
 	cmts =  await Cmts.findAll();
-	console.log(cmts);
-	res.send(cmts)
-
-});
-
-
-app.get('/comments', (req, res) => {
 	
+	res.send(cmts)
 });
+
 
 app.listen(PORT, HOST);

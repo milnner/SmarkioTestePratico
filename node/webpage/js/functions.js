@@ -15,9 +15,9 @@ function colocaOsComentarios(){ // coloca os comentários do banco de dados na t
             comentario +=   `<p>${res[i].comentario}</p>`;
             comentario += '</div>';
             comentario += '<div class="div-ouvir">';
-            comentario +=   '<div>';
-            comentario +=     '<button class="ouvir-b" onclick="passaAudio(2)">Ouvir</button>';
-            comentario +=   '</div>';
+            comentario +=   `<audio src="audio/${res[i].audio}.wav" id="${res[i].audio}">`;
+            comentario +=   '</audio>';
+            comentario +=    `<button class="button-audio" onclick="tocaAudio('${res[i].audio}')">Ouvir</button>`;
             comentario += '</div>';
             comentario += '</div>';
             comentarios.innerHTML += comentario;
@@ -31,12 +31,14 @@ function sendParams(params)
     http.open('POST', url, true);
     http.onreadystatechange = colocaOsComentarios;
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    http.send(params);
+    http.send(params); 
 }
-var element = document.getElementById('text-coment');
+
+
+
 
 function readText() { //retorna um cabeçalho para fazer o post
-    
+    let element = document.getElementById('text-coment');
     let text = element.value;
     let correctText = '';
     for(let i = 0; i < text.length; i++)
@@ -46,6 +48,12 @@ function readText() { //retorna um cabeçalho para fazer o post
     element.value = '';
     correctText = 'comment='+correctText;
     return correctText;
+}
+
+function tocaAudio(param) {
+    let audio = document.getElementById(param);
+    audio.play();
+
 }
 
 

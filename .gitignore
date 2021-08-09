@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# sensity information
+
+node/variaveis.js
