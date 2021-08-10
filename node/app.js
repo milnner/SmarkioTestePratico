@@ -10,7 +10,7 @@ const API_KEY = '{api-key}';
 
 const tts = new TextToSpeechV1({
     authenticator: new IamAuthenticator({
-      	apikey: API_KEY,
+      	apikey: API_KEY
     }),
     serviceUrl: 'https://api.us-south.text-to-speech.watson.cloud.ibm.com',
 });
