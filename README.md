@@ -31,7 +31,7 @@ Substitua '{api-key}' por uma string com sua chave de acesso do Watson Text To S
 ### Dentro da pasta _SmarkioTestePratico/mysql_
 Isso fara subir um conteiner do mysql que utilizará a porta 3306 do seu localhost.
 ~~~sh
-$ docker compose up 
+$ docker-compose up 
 ~~~
 O terminal ficará sendo utilizado, espere que seja criado o banco de dados e então realize o passo abaixo.  
 
