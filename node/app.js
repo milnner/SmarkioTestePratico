@@ -6,7 +6,7 @@ const fs = require('fs');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
 //TEXT_TO_SPEECH
-const API_KEY = 'wyQwmxg5zFajt1w9gSAOKzV_CTDgPc5XQfORcWuZnwdO';
+const API_KEY = '{api-key}';
 
 const tts = new TextToSpeechV1({
     authenticator: new IamAuthenticator({
