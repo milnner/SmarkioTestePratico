@@ -27,18 +27,14 @@ function colocaOsComentarios(){ // coloca os comentários do banco de dados na t
     }
 };
 
-function sendParams(params)
-{
+function sendParams(params) { //faz o post e quando finalizar coloca os comentários
     http.open('POST', url, true);
     http.onreadystatechange = colocaOsComentarios;
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     http.send(params); 
 }
 
-
-
-
-function readText() { //retorna um cabeçalho para fazer o post
+function readText() { //retorna o texto para fazer o post e zera o textArea
     let element = document.getElementById('text-coment');
     let text = element.value;
     let correctText = '';
@@ -48,10 +44,11 @@ function readText() { //retorna um cabeçalho para fazer o post
     }
     element.value = '';
     correctText = 'comment='+correctText;
+
     return correctText;
 }
 
-function tocaAudio(param) {
+function tocaAudio(param) { //carrega o audio para o navegador com o click do botão
     let audio =new Audio('http://localhost:3000/audio/'+param+'.wav');
     audio.play();
 }

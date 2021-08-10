@@ -15,7 +15,8 @@ const tts = new TextToSpeechV1({
     serviceUrl: 'https://api.us-south.text-to-speech.watson.cloud.ibm.com',
 });
 
-async function fazAudio(params){ //Ele retorna uma string que representa o binario do audio
+async function fazAudio(params){ //faz o arquivo de audio com nome de um hash md5 do texto usa como o nome do arquivo e retorna o hash 
+
 	fileName = `${md5(params.text)}`;
  	tts.synthesize(params).then(response => {
 		return tts.repairWavHeaderStream(response.result);
@@ -32,11 +33,11 @@ async function fazAudio(params){ //Ele retorna uma string que representa o binar
 };
 
 //MODEL
+
 const sequelize = new Sequelize('comentarios', 'root', 'pass', {
 	host: 'localhost',
 	dialect: 'mysql'
 });
-
 
 class Cmts extends Model {}
 try {
@@ -55,7 +56,7 @@ try {
 			  allowNull:false 
 		},
 		audio:{
-			type: DataTypes.STRING(6000),
+			type: DataTypes.STRING(255),
 			allowNull: false
 		},
 	}, {
