@@ -6,13 +6,13 @@ const fs = require('fs');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
 //TEXT_TO_SPEECH
-const API_KEY = '{api-key}';
+const API_KEY = 'wyQwmxg5zFajt1w9gSAOKzV_CTDgPc5XQfORcWuZnwdO';
 
 const tts = new TextToSpeechV1({
     authenticator: new IamAuthenticator({
-      apikey: API_KEY,
+      	apikey: API_KEY,
     }),
-    serviceUrl: 'https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/12db4b7b-b599-46d0-8d90-4d7ab6b114dc',
+    serviceUrl: 'https://api.us-south.text-to-speech.watson.cloud.ibm.com',
 });
 
 async function fazAudio(params){ //Ele retorna uma string que representa o binario do audio
@@ -30,9 +30,6 @@ async function fazAudio(params){ //Ele retorna uma string que representa o binar
   	});
 		return fileName;
 };
-	
-	
-
 
 //MODEL
 const sequelize = new Sequelize('comentarios', 'root', 'pass', {

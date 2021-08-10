@@ -9,30 +9,41 @@
 </head>
 <body>
   <main id="main">
-    <div id="left">
-      <div id="container-do-conteudo">
-        <p class="acima-form">Comentário</p>
-        <form id='form'>
-          <textarea name="coment" id="text-coment" cols="30" rows="10"></textarea>
-          <button id="sub">Cadastrar</button>
-        </form>
+    <div id="caixa">
+      <div id="left">
+        <div id="container-do-conteudo">
+          <p class="acima-form">Comentário</p>
+          <form id='form'>
+            <textarea name="coment" id="text-coment" cols="30" rows="10"></textarea>
+            <button id="sub">Cadastrar</button>
+          </form>
+        </div>
       </div>
-    </div>
 
-    <div id="linha"></div>
+      <div id="linha"><div></div></div>
 
-    <div id="right">
-      <div id="container-dos-comentarios">
-        <p class="acima-form">Comentários</p>
-        <div id="comentarios">
-          <div class="comentario">
+      <div id="right">
+        <div id="container-dos-comentarios">
+          <p class="acima-form">Comentários</p>
+          <div id="comentarios">
             
-            </div>
+              <div class="comentario">
+                <div class="cmts">
+                  <p>tessdjnfadfg nkandsçf knçasdnfgçanç snaçsldn çansçdnfç ajsdnf jnaçsdjnf çjasndf jnalçsjdnf çajsndçf jnaçsdjf naçsdjnf çajsdnçf ajnsdçf jnaçsdjnf çasjdnf çajsdnf ç</p>
+                </div>
+                <div class="div-ouvir">
+                  <audio src="audio/${res[i].audio}.wav" id="${res[i].audio}"></audio>
+                  <button class="button-audio" onclick="tocaAudio('${res[i].audio}')">Ouvir</button>
+                </div>
+              </div>
+              
+
           </div>
         </div>
       </div>
     </div>
   </main>
+  <script src="js/view.js"></script>
   <script src="js/functions.js"></script>
 </body>
 </html>

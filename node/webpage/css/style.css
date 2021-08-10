@@ -1,11 +1,90 @@
 @charset "utf-8";
 *
 {
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
+}
+.acima-form
+{
+    font-size: 16pt;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
 
+.button-audio
+{
+    font-weight: 600;
+    color: rgb(0,0,0);;
+    background-color: rgb(220,220,220);
+    border: 2px solid rgb(128, 128, 128);
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px rgb(128, 128, 128);
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 80px;
+    height: 25px;
+}
 
+.cmts
+{
+    width: 60%;
+    margin-top: 40px;
+}
+
+.comentario
+{
+    display: flex;
+    align-items:center;
+}
+
+#caixa
+{
+    position: relative;
+    padding: 0 20px;
+    display: flex;
+
+}
+
+#text-coment
+{
+    border: 2px solid grey;
+    resize: none;
+    width: 90%;
+}
+
+#right, #left
+{
+    width: 50%;
+    padding: 20px 0;
+
+}
+
+#linha
+{
+    display: flex;
+    align-items: center;
+    margin: 0 90px 0 80px;
+
+}
+#linha div
+{
+    border: 1px solid grey;
+    height: 90%
+    
 }
 
 
 
+#sub
+{
+    font-size: 14pt;
+    border: 1px solid grey;
+    font-weight: 650;
+    background-color: rgb(220,220,220);
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px rgb(128, 128, 128);
+    width: 90%;
+    margin-left: .25%;
+    margin-top: 2px;
+}

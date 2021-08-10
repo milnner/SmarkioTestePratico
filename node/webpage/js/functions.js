@@ -1,3 +1,4 @@
+//CONEXÕES HTTP 
 var http = new XMLHttpRequest();
 var url = 'http://localhost:3000/add';
 
@@ -51,9 +52,8 @@ function readText() { //retorna um cabeçalho para fazer o post
 }
 
 function tocaAudio(param) {
-    let audio = document.getElementById(param);
+    let audio =new Audio('http://localhost:3000/audio/'+param+'.wav');
     audio.play();
-
 }
 
 
